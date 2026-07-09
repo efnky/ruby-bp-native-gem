@@ -5,8 +5,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     libpq-dev \
     && rm -rf /var/lib/apt/lists/*
 COPY Gemfile Gemfile.lock ./
-RUN bundle config set --local deployment 'true' && \
-    bundle config set --local without 'development test' && \
+RUN bundle config set --local without 'development test' && \
     bundle install --jobs 4
 
 FROM ruby:3.3-slim
